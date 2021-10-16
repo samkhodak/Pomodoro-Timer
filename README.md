@@ -10,7 +10,7 @@ TimeFlo is an implementation of a
 [Pomodoro&reg;](https://en.wikipedia.org/wiki/Pomodoro_Technique)-like
 timer for breaking out of flow state.
 
-*Description of your TimeFlo timer. Hello.*
+*Description of your TimeFlo timer.*	
 
 ## Status and Roadmap
 
