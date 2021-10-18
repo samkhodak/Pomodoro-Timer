@@ -4,7 +4,7 @@
 Timeflo project for CS300.
 =======
 # TimeFlo
-Copyright &copy; 2021 *Author Full Name*
+Copyright &copy; 2021 *Samuel Khodakovskiy*
 
 TimeFlo is an implementation of a
 [Pomodoro&reg;](https://en.wikipedia.org/wiki/Pomodoro_Technique)-like
