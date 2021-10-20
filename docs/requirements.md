@@ -4,18 +4,17 @@
 (*Thanks to Chris Gilmore for the document template for this
 document.*)
 
-## Introduction
 
-*Introduce this document and the project it describes. You should also
-summarize the remaining content of the document here.*
+
+## Introduction
 
 This document is intended to outline the TimeFlo project for each student in CS300. The document will cover 
 the purpose and scope of the document, the target audience of the timer, any terms and definitions used in
 the project, and an overview of the product. It will also go over the users and stakeholders of the timer.
 
-### Purpose and Scope
 
-*You should describe this document by giving its purpose, scope.*
+
+### Purpose and Scope
 
 The purpose of the document is to provide an overview of the project as a reference. The 'requirements'
 document can be accessed in the future to ensure that each requirement of the project is met and 
@@ -24,18 +23,15 @@ and schedule, and design writeup. After this, the design will be implemented and
 will be tested to ensure efficacy.
 
 
-### Target Audience
 
-*Describe the target audience for this document.*
+### Target Audience
 
 The target audience of this document is the stakeholder of the project, and possible users (including 
 students and developers).
 
 
-### Terms and Definitions
 
-*Define any terms or acronyms you will be using in the remainder of this
-document.*
+### Terms and Definitions
 
 Workflow - the flow of getting focused in your work that can sometimes become non-beneficial. 
 
@@ -51,12 +47,6 @@ Phase - section of the timer that the user is currently in; either workflow phas
 
 ## Product Overview
 
-*Give a high level description of the functionality of the project here.
-Describe the purpose of this section. It may be useful to give your
-definition of a user, a stake holder and a use case. If there are scope
-limitations to the project, i.e. things you will not be doing, or are
-not required to do, this is a good section to put those.*
-
 The TimeFlo timer will be used as a study timer or a workflow timer. The TimeFlo application will
 allow the user to enter the amount of time they want to work for in each work increment, and enter
 the amount of time needed for each break. The timer will then run for the allotted specified amount of
@@ -69,42 +59,30 @@ scope of the project and is not in the skillset of the developer.
 
 ### Users and Stakeholders
 
-*Describe the purpose of this section. Only a few sentences are expected
-here.*
-
 This section will list the users and stakeholders attached to this project.
 
 
-#### *Stakeholder 1*
 
-*List the first stakeholder or class of stakeholders if necessary.
-Describe, exactly, their role in the development, deployment, use,
-maintenance, etc. of the software.*
+#### Professor Bart Massey
 
-***Professor Bart Massey***
 Bart Massey is the head overseer of this project and will evaluate its completed state,
 as well as the quality of every phase of the project.
 
 
 
-#### *Stakeholder 2*
+#### Sam Khodakovskiy
 
-***Sam Khodakovskiy***
 Sam Khodakovskiy is the only developer and owner of this product.
+
 
 
 ### Use cases
 
-*Describe the purpose of this section. Only a few sentences are expected
-here.*
-
 Use cases will help readers of this document see specific examples of how the product might be used.
 
 
-#### *Use Case 1*
 
-*Describe the first use case here. Be sure to explicitly identify the
-participants, human or otherwise, and explain their roles.*
+#### Studying timer case
 
 The user is an end user using the product in its deployed state and decides they need a workflow 
 timer for their studying. They load up the program and are greeted by a menu to start the TimeFlo timer.
@@ -117,7 +95,7 @@ user stops the timer to go check on their bread in the oven.
 
 
 
-#### *Use Case 2*
+#### Testing case
 
 The user is a tester, testing the program at a stage in its development. The tester turns on the
 program and starts by entering in the workflow time and break time parameters. They then start the 
@@ -128,21 +106,15 @@ timer runs down, the alarm once again goes off. The tester indicates that they w
 TimeFlo timer again, and it runs one more cycle with the same parameters.
 
 
-## Functional Requirements
 
-*Describe the purpose of this section and outline its contents. Only a
-few sentences are expected here. It may help to define a functional
-requirement.*
+## Functional Requirements
 
 This section lists the specific parts of the application that are required for the finished
 product, namely the usability of the timer and alerts. These are functional requirements.
 
 
-### *Functional Requirements 1*
 
-*Describe the first functional requirement. This is the meat of the
-document, so be sure to use precise language. Include diagrams when
-appropriate. Break this into a list of sub-requirements as needed.*
+### Timer functionality
 
 - The user shall be able to enter a set time that each timer will run for in the TimeFlo program.
 	- The user must be able to change these timer lengths at will.
@@ -151,43 +123,33 @@ appropriate. Break this into a list of sub-requirements as needed.*
 
 
 
-
-
-### *Functional Requirement 2*
+### Alerts functionality
 
 - The user of the TimeFlo program must be alerted when each phase is done.
 	- An alert must be dispatched after the workflow phase, then after the break phase.
 	- Each alert must be seen and heard by the user. 
 	- An audible sound must be played to the user.
 	- A pop-up message must be shown to the user.
-	
+
+
 
 ## Extra-functional Requirements
-
-*Describe the purpose of this section and outline its contents. Only a
-few sentences are expected here. It may help to define a nonfunctional
-requirement.*
 
 Extra-functional requirements are constraints on services or functions offered by the product. 
 This section will outline the constraints on timing and 
 
 
 
-### *Extra-functional Requirement 1*
-
-*Describe the first nonfunctional requirement. This is the meat of the
-document, so be sure to use precise language. Include diagrams when
-appropriate.*
+### Timer accuracy
 	
 - The full, correct time must run before the timer is stopped or the phase is switched.
 	- Time must be accurately calculated to the user's specification so they know exactly how
 	much time will be spent in each flow state.
 
 
-### *Extra-functional Requirement 2*
+### Program reliability
 
 - The product must be dependable to run completely.
 	- The program must not have bugs that can cause it to crash, otherwise the user
 	may not be broken out of their flow state; a big issue.
 
-*Etc.*

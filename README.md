@@ -10,14 +10,14 @@ TimeFlo is an implementation of a
 [Pomodoro&reg;](https://en.wikipedia.org/wiki/Pomodoro_Technique)-like
 timer for breaking out of flow state.
 
-*Description of your TimeFlo timer.*	
+The TimeFlo program will allow the user to set timers for themselves and go from workflow
+to a break time, with timers in between. 
 
 ## Status and Roadmap
 
-*Status of the MVP. Describe what works and what
-doesn't. Describe "future work" for this project.*
+The project is currently in the project plan phase. The requirements have been completed.
 
-* [ ] Requirements complete.
+* [x] Requirements complete.
 * [ ] Project plan complete.
 * [ ] Design complete.
 * [ ] Implementation complete.
@@ -25,7 +25,7 @@ doesn't. Describe "future work" for this project.*
 
 ## Build and Run
 
-*Instructions to build and run your project.*
+This section will be updated when the program is implemented and testable.
 
 ## Development Docs
 
@@ -35,4 +35,3 @@ Development documentation is available for TimeFlo, including:
 * [Project Plan](docs/plan.md)
 * [Design Doc](docs/design.md)
 * [V&amp;V Report](docs/vnv.md)
->>>>>>> TimeFlo timer
