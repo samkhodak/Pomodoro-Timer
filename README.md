@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# Timeflo
-
-Timeflo project for CS300.
-=======
 # TimeFlo
 Copyright &copy; 2021 *Samuel Khodakovskiy*
 
