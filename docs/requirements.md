@@ -33,15 +33,15 @@ students and developers).
 
 ### Terms and Definitions
 
-Workflow - the flow of getting focused in your work that can sometimes become non-beneficial. 
+* Workflow - the flow of getting focused in your work that can sometimes become non-beneficial. 
 
-User - members of the public that will be using or testing the 
+* User - members of the public that will be using or testing the 
 product, including developers andstakeholders.
 
-Stakeholder - anyone with a personal investment in the success of the product or access
+* Stakeholder - anyone with a personal investment in the success of the product or access
 to oversight of the product.
 
-Phase - section of the timer that the user is currently in; either workflow phase or break phase.
+* Phase - section of the timer that the user is currently in; either workflow phase or break phase.
 
 
 
@@ -57,26 +57,26 @@ scope of the project and is not in the skillset of the developer.
 
 
 
-### Users and Stakeholders
+## Users and Stakeholders
 
 This section will list the users and stakeholders attached to this project.
 
 
 
-#### Professor Bart Massey
+### Professor Bart Massey
 
 Bart Massey is the head overseer of this project and will evaluate its completed state,
 as well as the quality of every phase of the project.
 
 
 
-#### Sam Khodakovskiy
+### Sam Khodakovskiy
 
 Sam Khodakovskiy is the only developer and owner of this product.
 
 
 
-### Use cases
+## Use cases
 
 Use cases will help readers of this document see specific examples of how the product might be used.
 
