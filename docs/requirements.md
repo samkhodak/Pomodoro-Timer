@@ -1,10 +1,6 @@
 # The TimeFlo Project: Requirements Document
 *Sam Khodakovskiy 2021*
 
-(*Thanks to Chris Gilmore for the document template for this
-document.*)
-
-
 
 ## Introduction
 
@@ -136,7 +132,7 @@ product, namely the usability of the timer and alerts. These are functional requ
 ## Extra-functional Requirements
 
 Extra-functional requirements are constraints on services or functions offered by the product. 
-This section will outline the constraints on timing and 
+This section will outline the constraints on timing and program reliability.
 
 
 
