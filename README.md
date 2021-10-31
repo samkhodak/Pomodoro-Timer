@@ -13,8 +13,8 @@ to a break time, with timers in between.
 The project is currently in the project plan phase. The requirements have been completed.
 
 * [x] Requirements complete.
-* [ ] Project plan complete.
-* [ ] Design complete.
+* [x] Project plan complete.
+* [x] Design complete.
 * [ ] Implementation complete.
 * [ ] Validation complete.
 

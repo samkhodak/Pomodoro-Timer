@@ -47,9 +47,9 @@ The TimeFlo timer will be used as a study timer or a workflow timer. The TimeFlo
 allow the user to enter the amount of time they want to work for in each work increment, and enter
 the amount of time needed for each break. The timer will then run for the allotted specified amount of
 workflow time, before ringing an alarm. It will then automatically start the break timer. The user will
-have the ability to pause and resume the alarm, and stop the alarm to re-enter time parameters. This
-application will most likely not have an advanced graphical user interface, as this is beyond the 
-scope of the project and is not in the skillset of the developer.
+have the ability to stop the alarm to re-enter time parameters. This application will most likely not 
+have an advanced graphical user interface, as this is beyond the scope of the project and is not in 
+the skillset of the developer.
 
 
 
@@ -95,8 +95,8 @@ user stops the timer to go check on their bread in the oven.
 
 The user is a tester, testing the program at a stage in its development. The tester turns on the
 program and starts by entering in the workflow time and break time parameters. They then start the 
-timer and pause it. They resume the timer and pause it once more. They stop the timer before
-it rings an alarm and re-enter the timer parameters. The timer is started again at the beginning. 
+timer and later stop it before it rings an alarm and re-enter the timer parameters. The timer 
+is started again at the beginning. 
 The timer runs until it hits the alarm and then starts the break timer, then after the break 
 timer runs down, the alarm once again goes off. The tester indicates that they want to start the
 TimeFlo timer again, and it runs one more cycle with the same parameters.
@@ -113,9 +113,10 @@ product, namely the usability of the timer and alerts. These are functional requ
 ### Timer functionality
 
 - The user shall be able to enter a set time that each timer will run for in the TimeFlo program.
+	- The timer should save these set times into memory so the user can re-run and have the times.
+	- The timer must run for the appropriate entered times.
 	- The user must be able to change these timer lengths at will.
 	- The timer must be able to be stopped to re-enter timer lengths.
-	- The timer must be able to be paused, and resumed until completion.
 
 
 

@@ -18,9 +18,10 @@ It is possible more tools will be required.
 1. Complete design document with project architecture whitepaper (1 hour).
 2. Start implementation by setting basic timer up in c++ (1-2 hours).
 3. Once step two is complete and working, implement both timers based on user input (1 hour).
-4. After 3, implement options to pause, resume, and stop timers (1 hour).
+4. After 3, implement options to stop and restart timers (1 hour).
 5. After 4, Add loop to run first phase and second phase automatically (1 hour).
-6. Complete implementation by adding alarm alerts (1 hour).
+6. Add alarm alerts (1 hour).
+7. Add external data files to save user time phase preferences. (1 hour).
 7. Validate and verify implementation with peers and developer (3 hours).
 8. Write V&V report (1-2 hours).
 
