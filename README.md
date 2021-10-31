@@ -15,7 +15,7 @@ The project is currently in the project plan phase. The requirements have been c
 * [x] Requirements complete.
 * [x] Project plan complete.
 * [x] Design complete.
-* [ ] Implementation complete.
+* [x] Implementation complete.
 * [ ] Validation complete.
 
 ## Build and Run
