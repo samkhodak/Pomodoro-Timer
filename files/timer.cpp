@@ -14,6 +14,7 @@ timer::timer() : workflow_time(0), break_time(0)
 //Run through both phases of timer.
 int timer::main_timer()
 {
+	system("clear");
 	
 	if (minutes_timer(workflow_time, 1))	//Returns a 1, user wants to stop whole timer.
 		return 1;
@@ -34,7 +35,7 @@ int timer::main_timer()
 int timer::minutes_timer(int num_mins, bool phase)
 {
 	int input_check {0}; //Used with getch() to check for user's quit.
-	char time_output[STR_SIZE] = {0};
+	int row, col = 0;
 
 
 	//Initiate the ncurses screen. Configure settings.
@@ -48,11 +49,10 @@ int timer::minutes_timer(int num_mins, bool phase)
 
 	//Make a checker to display time.
 	steady_clock::time_point checker = start;
-
 	
 	while (steady_clock::now() < end_point)	//Stops when timer is up
 	{
-		int center_col = win -> _maxx / 2;
+
 
 		//Check if the user wants to stop the time
 		input_check = getch();
@@ -77,17 +77,14 @@ int timer::minutes_timer(int num_mins, bool phase)
 		
 			if (phase)
 			{
-				snprintf(time_output, STR_SIZE, "WORKFLOW PHASE: %ld MINUTES and %ld SECONDS.", rem_minutes.count(), rem_seconds.count());
-				
-				int half_len = strlen(time_output) / 2;
-				int adjusted_col = center_col - half_len;
-				mvwprintw(win, 10, adjusted_col, time_output);
+				cout << "\n\n\n\n\n\n\n\n\n\n\t\t[ REMAINING WORKFLOW TIME: " 
+					<< rem_minutes.count() << " minutes and " << rem_seconds.count() << " seconds]"
+					<< "  [ x to end timer ]" << endl;
 
 				refresh();
-
 			}
 			else
-				snprintf(time_output, STR_SIZE, "BREAK PHASE: %ld MINUTES and %ld SECONDS.", rem_minutes.count(), rem_seconds.count());
+				cout << "hi";
 			
 			checker = checker + seconds(1);
 		}
