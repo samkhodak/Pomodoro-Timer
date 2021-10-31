@@ -14,13 +14,41 @@ timer::timer() : workflow_time(0), break_time(0)
 //Run through both phases of timer.
 int timer::main_timer()
 {
-	system("clear");
-	
+	//Run workflow timer
 	if (minutes_timer(workflow_time, 1))	//Returns a 1, user wants to stop whole timer.
 		return 1;
+	system("clear");
 
+	cout << "\n\n\n\n\n\n\n\t\tWORKFLOW PHASE COMPLETE! BREAK STARTING SOON."<< endl;
+
+	for (int i = 0; i < 50; ++i)
+	{
+		cout << "\a" << flush;
+		usleep(600000);
+	}
+
+	system("clear");
+
+	cout << "\n\n\n\n\n\n\n\t\tBREAK PHASE BEGINNING IN 3.. " << flush;
+	sleep(1);
+	cout << "2.. " << flush;
+	sleep(1);
+	cout << "1.." << flush;
+	sleep(1);
+
+
+	//Run break timer right after
 	if (minutes_timer(break_time, 0))	//0 arg indicates it's a break timer, 1 is for workflow.
 		return 1;
+
+	cout << "\n\n\n\n\n\n\n\t\t\tBREAK PHASE COMPLETE!"<< endl;
+
+	for (int i = 0; i < 50; ++i)
+	{
+		cout << "\a";
+		usleep(450000);
+	}
+
 	
 	cout << "\n\n\nYour break has ended! Returning to main menu..." << endl;
 
@@ -84,7 +112,12 @@ int timer::minutes_timer(int num_mins, bool phase)
 				refresh();
 			}
 			else
-				cout << "hi";
+			{
+				cout << "\n\n\n\n\n\n\n\n\n\n\t\t[ REMAINING BREAK TIME: " 
+					<< rem_minutes.count() << " minutes and " << rem_seconds.count() << " seconds]"
+					<< "  [ x to end timer ]" << endl;
+
+			}
 			
 			checker = checker + seconds(1);
 		}
