@@ -65,7 +65,8 @@ save the last parameters that the user has entered.
 	- Menu will be implemented with a switch statement and a do-while loop, with each of the 
 		menu options calling functions for each task in the switch statement. After each function 
 		is called, the loop will iterate again until the user enters the exit case. Each function
-		will be called from a timeflo object that saves parameters.
+		will be called from a timeflo object that saves parameters. If the user wants to exit the
+		program, they simply type the last option.
 
 - Prompting user for time phase intervals
 	- A function will be called that will prompt the user for the appropriate time intervals
@@ -83,6 +84,23 @@ save the last parameters that the user has entered.
 	- If the user selects that they want to start the timer with the parameters they have already
 		entered (which will be assured by calling the interval entry function before the menu), this
 		function will be called and will start the loop that counts the amount of time that has elapsed.
+		This will be done twice; once for the workflow phase, and then for the break phase.
 	
-	- The loop will run as a while loop and will che
+	- The library <chrono> will be primarily used to count time. A timer startpoint (now()) and a timer
+		endpoint (now + phase length) will be declared. A while loop will be used to continue printing
+		the remaining time until the endpoint of time is reached. For each while iteration, the 
+		remaining time will be calculated by subtracting the current time (now()) from the endpoint. 
+		This duration will then be split up into minutes and seconds by casting using the duration
+		library. 
 
+	- Once the remaining time is calculated inside the loop, the function will check if a second
+		has passed by checking a separate time point and seeing if now() is greater than it. If it is,
+		a second is added (to check against now() later) and the time is output.
+
+	- Once the while is false, the function will exit. Inside each loop, getch() will be used to
+		check if the user wants to stop the timer. If they press 'x', the function returns.
+
+	- This function is multi-use and will be used for both the workflow and time phase inside 
+		another function. After each call returns success (not that the user wants to stop), an
+		alert will sound by using a loop that outputs '\a', the terminal bell, and a visual text
+		alert will be displayed.
