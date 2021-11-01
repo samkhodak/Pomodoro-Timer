@@ -9,10 +9,6 @@ as the low-level detailed design of the TimeFlo product.
 
 ## Architecture
 
-*For each component identified in the architecture, describe
-briefly what it will do, how it will work, and
-implementation risks associated with it.*
-
 The architecture of the TimeFlo program consists of a base timer mechanism that 
 will be specified by the user to fulfill a certain slice of time; this is the 
 foundation of the whole implementation. 

@@ -9,7 +9,7 @@ int yes()
 
 	do {
 
-		cout << "\n(Y/N)" << endl << endl;
+		cout << "\n\t\t(Y/N)" << endl << endl;
 		cin >> again;
 		cin.ignore(100, '\n');
 

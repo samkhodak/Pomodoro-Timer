@@ -50,7 +50,7 @@ int timer::main_timer()
 	}
 
 	
-	cout << "\n\n\nYour break has ended! Returning to main menu..." << endl;
+	cout << "\n\n\n\n\n\n\n\t\t\tYour break has ended! Returning to main menu..." << endl;
 
 	sleep(3);
 
@@ -63,7 +63,6 @@ int timer::main_timer()
 int timer::minutes_timer(int num_mins, bool phase)
 {
 	int input_check {0}; //Used with getch() to check for user's quit.
-	int row, col = 0;
 
 
 	//Initiate the ncurses screen. Configure settings.
@@ -94,8 +93,8 @@ int timer::minutes_timer(int num_mins, bool phase)
 		//Print remaining time every second.
 		if (steady_clock::now() > checker)
 		{
-			system("clear");
-			
+			//system("clear");
+			erase();	
 			//Calculate remaining time
 			duration<double> time_span = duration_cast<duration<double>>(end_point - steady_clock::now());
 			
@@ -105,17 +104,24 @@ int timer::minutes_timer(int num_mins, bool phase)
 		
 			if (phase)
 			{
+				/*
 				cout << "\n\n\n\n\n\n\n\n\n\n\t\t[ REMAINING WORKFLOW TIME: " 
 					<< rem_minutes.count() << " minutes and " << rem_seconds.count() << " seconds]"
 					<< "  [ x to end timer ]" << endl;
+					*/
+				mvprintw(4, 8, "[ REMAINING WORKFLOW TIME: %ld minutes and %ld seconds ]   [x to end timer]", rem_minutes.count(), rem_seconds.count());
 
 				refresh();
 			}
 			else
 			{
+				/*
 				cout << "\n\n\n\n\n\n\n\n\n\n\t\t[ REMAINING BREAK TIME: " 
 					<< rem_minutes.count() << " minutes and " << rem_seconds.count() << " seconds]"
 					<< "  [ x to end timer ]" << endl;
+					*/
+
+				mvprintw(4, 4, "[ REMAINING BREAK TIME: %ld minutes and %ld seconds ]   [x to end timer]", rem_minutes.count(), rem_seconds.count());
 
 			}
 			
@@ -123,6 +129,7 @@ int timer::minutes_timer(int num_mins, bool phase)
 		}
 	
 	}
+
 	
 	endwin();
 	return 0;
@@ -141,13 +148,13 @@ int timer::menu()
 	do
 	{
 		system("clear");
-		cout << "\n\nPlease choose a menu option." << endl << endl;
+		cout << "\n\n\t\tPlease choose a menu option." << endl << endl;
 
-		cout << "\n== 1 ==== Set your timer phase lengths ====" << endl;
-		cout << "\n== 2 ====== Start the TimeFlo timer =======" << endl;
-		cout << "\n== 3 ======== Exit the program ============" << endl;
+		cout << "\n\t\t== 1 ==== Set your timer phase lengths ====" << endl;
+		cout << "\n\t\t== 2 ====== Start the TimeFlo timer =======" << endl;
+		cout << "\n\t\t== 3 ======== Exit the program ============" << endl;
 		
-		cout << "\nMenu choice: ";
+		cout << "\n\t\tMenu choice: ";
 		cin >> menu_choice;
 
 		while (cin.fail())
@@ -155,8 +162,8 @@ int timer::menu()
 			cin.clear();
 			cin.ignore(100, '\n');
 
-			cout << "\n\nMake sure you chose an integer for your menu choice and re-enter." << endl << endl;
-			cout << "Menu choice: ";
+			cout << "\n\n\t\tMake sure you chose an integer for your menu choice and re-enter." << endl << endl;
+			cout << "\t\tMenu choice: ";
 			cin >> menu_choice;
 		}
 		cin.ignore(100,'\n');
@@ -172,13 +179,12 @@ int timer::menu()
 				break;
 
 			case 3:
+				cout << endl << endl << endl;
 				break;
 		}
-	
-
-
 	}
 	while(menu_choice != 3);
+
 	
 	return 0;
 }
@@ -193,8 +199,8 @@ int timer::define_times()
 
 	do
 	{
-		cout << "\n\nHow many minutes do you want your workflow phase to be?" << endl
-			<< "Enter an integer from 1 - 60." << endl << endl;
+		cout << "\n\n\t\tHow many minutes do you want your workflow phase to be?" << endl
+			<< "\t\tEnter an integer from 1 - 60." << endl << endl;
 
 		cin >> workflow_time;
 
@@ -205,8 +211,8 @@ int timer::define_times()
 			cin.ignore(100, '\n');	//Ignore for correct input
 			system("clear");
 
-			cout << "\n\nPlease re-enter an integer from 1 - 60 for" << endl
-				<< "the amount of minutes in your workflow phase." << endl << endl;
+			cout << "\n\n\t\tPlease re-enter an integer from 1 - 60 for" << endl
+				<< "\t\tthe amount of minutes in your workflow phase." << endl << endl;
 
 			cin >> workflow_time;
 		}
@@ -214,8 +220,8 @@ int timer::define_times()
 
 
 		//Repeat steps for break time phase length.
-		cout << "\n\nHow long should your break be? Enter an integer from 1 - 30" << endl
-			<< "to indicate the number of minutes." << endl << endl;
+		cout << "\n\n\t\tHow long should your break be? Enter an integer from 1 - 30" << endl
+			<< "\t\tto indicate the number of minutes." << endl << endl;
 
 		cin >> break_time;
 
@@ -225,7 +231,7 @@ int timer::define_times()
 			cin.ignore(100, '\n');
 			system("clear");
 
-			cout << "\n\nSomething went wrong. Re-enter your break length as integer from 1-30 minutes."
+			cout << "\n\n\t\tSomething went wrong. Re-enter your break length as integer from 1-30 minutes."
 				<< endl << endl;
 
 			cin >> break_time;
@@ -233,15 +239,15 @@ int timer::define_times()
 		cin.ignore(100, '\n');
 		system("clear");
 
-		cout << "\n\nYou entered " << workflow_time << " minutes as your workflow phase length and " 
+		cout << "\n\n\t\tYou entered " << workflow_time << " minutes as your workflow phase length and " 
 		<< break_time << " minutes as your break time." << endl;
-		cout << "Does that sound correct?" << endl;
+		cout << "\t\tDoes that sound correct?" << endl;
 	
 
 		repeat_check = yes();	
 		if (!repeat_check)
 		{
-			cout << "\n\nSorry about that! Let's try again." << endl << endl;
+			cout << "\n\n\t\tSorry about that! Let's try again." << endl << endl;
 
 			sleep(3);
 
@@ -256,7 +262,7 @@ int timer::define_times()
 										//for incorrect, we loop again.
 
 	
-	cout << "\n\nSounds good!" << endl << endl;
+	cout << "\n\n\t\tSounds good!" << endl << endl;
 
 	sleep(3);
 

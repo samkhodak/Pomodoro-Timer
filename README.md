@@ -20,7 +20,8 @@ The project is currently in the project plan phase. The requirements have been c
 
 ## Build and Run
 
-This section will be updated when the program is implemented and testable.
+In order to build the application, type `make` into your terminal. This compiles and creates an executable.
+To run the application, type `./out` into your terminal.
 
 ## Development Docs
 
