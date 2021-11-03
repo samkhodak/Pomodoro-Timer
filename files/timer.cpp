@@ -7,21 +7,66 @@
 //Constructor
 timer::timer() : workflow_time(0), break_time(0)
 {
-	define_times();	//Automatically set times so menu will always be fully functional
+	read_in();
+}
+
+//WRite out parameters to an external data file for later.
+void timer::write_out()
+{
+	ofstream out;	
+	out.open("parameters.txt");
+
+	if (out)
+	{
+		out << workflow_time << ' ' << break_time << ' ' << endl;
+	}
+
+	out.close();
+
+	return;
+}
+
+//Read in previously saved parameters and store them if needed.
+void timer::read_in()
+{
+	int workflow_param, break_param = 0;
+	ifstream in;
+	in.open("parameters.txt");
+
+	if (!in)
+		define_times();	//If nothing is in the file, fill the class' times.
+	else
+	{
+		in >> workflow_param >> break_param;
+		cout << "\n\n\t\tYour previously saved settings were:" << endl;
+		cout << "\t\t[Workflow] " << workflow_param << " and [Break] " << break_param << "." << endl;
+		cout << "\t\tDo you want to use these settings?";
+
+		if (yes())
+		{
+			workflow_time = workflow_param;
+			break_time = break_param;
+			cout << "\t\tYour previous times are saved!" << endl;
+			return;
+		}
+		else				
+			define_times();
+	}
+	return;
 }
 
 
 //Run through both phases of timer.
-int timer::main_timer()
+void timer::main_timer()
 {
 	//Run workflow timer
 	if (minutes_timer(workflow_time, 1))	//Returns a 1, user wants to stop whole timer.
-		return 1;
+		return;
 	system("clear");
 
 	cout << "\n\n\n\n\n\n\n\t\tWORKFLOW PHASE COMPLETE! BREAK STARTING SOON."<< endl;
 
-	for (int i = 0; i < 50; ++i)
+	for (int i = 0; i < 20; ++i)
 	{
 		cout << "\a" << flush;
 		usleep(600000);
@@ -39,23 +84,22 @@ int timer::main_timer()
 
 	//Run break timer right after
 	if (minutes_timer(break_time, 0))	//0 arg indicates it's a break timer, 1 is for workflow.
-		return 1;
+		return;
 
 	cout << "\n\n\n\n\n\n\n\t\t\tBREAK PHASE COMPLETE!"<< endl;
 
-	for (int i = 0; i < 50; ++i)
+	for (int i = 0; i < 20; ++i)
 	{
-		cout << "\a";
+		cout << "\a" << flush;
 		usleep(450000);
 	}
 
-	
+
 	cout << "\n\n\n\n\n\n\n\t\t\tYour break has ended! Returning to main menu..." << endl;
 
 	sleep(3);
 
-	return 0;
-
+	return;
 }
 
 
@@ -68,15 +112,15 @@ int timer::minutes_timer(int num_mins, bool phase)
 	//Initiate the ncurses screen. Configure settings.
 	WINDOW * win = initscr();	
 	nodelay(win, TRUE);
-	
+
 	//Establish start point and end point.
 	steady_clock::time_point start = steady_clock::now();	//MAY BE UNNEEDED?
 	steady_clock::time_point end_point = start + minutes(num_mins);
-			//char * what = "hi there " << rem_minutes << " lol";
+	//char * what = "hi there " << rem_minutes << " lol";
 
 	//Make a checker to display time.
 	steady_clock::time_point checker = start;
-	
+
 	while (steady_clock::now() < end_point)	//Stops when timer is up
 	{
 
@@ -89,48 +133,41 @@ int timer::minutes_timer(int num_mins, bool phase)
 			return 1;	//Indicate back that the user wants to end completely.
 		}
 
-		
+
 		//Print remaining time every second.
 		if (steady_clock::now() > checker)
 		{
 			//system("clear");
 			erase();	
+
 			//Calculate remaining time
 			duration<double> time_span = duration_cast<duration<double>>(end_point - steady_clock::now());
-			
+
 			//Extract how many minutes/seconds is in the time left.
 			auto rem_minutes = duration_cast<minutes>(time_span);
 			auto rem_seconds = duration_cast<seconds>(time_span - rem_minutes);
-		
+
 			if (phase)
 			{
-				/*
-				cout << "\n\n\n\n\n\n\n\n\n\n\t\t[ REMAINING WORKFLOW TIME: " 
-					<< rem_minutes.count() << " minutes and " << rem_seconds.count() << " seconds]"
-					<< "  [ x to end timer ]" << endl;
-					*/
 				mvprintw(4, 8, "[ REMAINING WORKFLOW TIME: %ld minutes and %ld seconds ]   [x to end timer]", rem_minutes.count(), rem_seconds.count());
 
 				refresh();
 			}
 			else
 			{
-				/*
-				cout << "\n\n\n\n\n\n\n\n\n\n\t\t[ REMAINING BREAK TIME: " 
-					<< rem_minutes.count() << " minutes and " << rem_seconds.count() << " seconds]"
-					<< "  [ x to end timer ]" << endl;
-					*/
 
 				mvprintw(4, 4, "[ REMAINING BREAK TIME: %ld minutes and %ld seconds ]   [x to end timer]", rem_minutes.count(), rem_seconds.count());
 
+				refresh();
+
 			}
-			
+
 			checker = checker + seconds(1);
 		}
-	
+
 	}
 
-	
+
 	endwin();
 	return 0;
 }
@@ -140,9 +177,9 @@ int timer::minutes_timer(int num_mins, bool phase)
 
 
 //Menu for each time
-int timer::menu()
+void timer::menu()
 {
-	
+
 	int menu_choice {0};
 
 	do
@@ -153,7 +190,7 @@ int timer::menu()
 		cout << "\n\t\t== 1 ==== Set your timer phase lengths ====" << endl;
 		cout << "\n\t\t== 2 ====== Start the TimeFlo timer =======" << endl;
 		cout << "\n\t\t== 3 ======== Exit the program ============" << endl;
-		
+
 		cout << "\n\t\tMenu choice: ";
 		cin >> menu_choice;
 
@@ -185,8 +222,8 @@ int timer::menu()
 	}
 	while(menu_choice != 3);
 
-	
-	return 0;
+
+	return;
 }
 
 
@@ -240,9 +277,9 @@ int timer::define_times()
 		system("clear");
 
 		cout << "\n\n\t\tYou entered " << workflow_time << " minutes as your workflow phase length and " 
-		<< break_time << " minutes as your break time." << endl;
+			<< break_time << " minutes as your break time." << endl;
 		cout << "\t\tDoes that sound correct?" << endl;
-	
+
 
 		repeat_check = yes();	
 		if (!repeat_check)
@@ -254,14 +291,17 @@ int timer::define_times()
 			system("clear");
 		}
 
-		
-		
+
+
 
 	}
 	while (!repeat_check);		//Yes() will return a 1 if the user enters a y. So if they enter an n
-										//for incorrect, we loop again.
+	//for incorrect, we loop again.
 
-	
+	//Write out final parameters.
+	write_out();
+
+
 	cout << "\n\n\t\tSounds good!" << endl << endl;
 
 	sleep(3);

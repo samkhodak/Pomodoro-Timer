@@ -20,7 +20,7 @@ timeflo.o: timer.cpp
 
 
 clean:
-	    rm -f $(OBJS) $(OUT)
+	    rm -f $(OBJS) $(OUT) *.txt
 
 v:
 			vim *.cpp *.h -p

@@ -3,6 +3,7 @@
 #include <curses.h>
 #include <chrono>
 #include <unistd.h>
+#include <fstream>
 
 //Sam Khodakovskiy, CS300, TimeFlo Project
 
@@ -14,6 +15,8 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::flush;
+using std::ifstream;
+using std::ofstream;
 
 using namespace std::chrono;
 
@@ -24,15 +27,17 @@ class timer
 {
 	public:
 		timer();
-		int menu();
+		void menu();
 
 
 	private:
 		
 		//Functions
+		void read_in();
+		void write_out();
 		int minutes_timer(int num_mins, bool phase);
 		int define_times();
-		int main_timer();
+		void main_timer();
 		
 		//Members
 		int workflow_time;
