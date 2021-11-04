@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <fstream>
 
-//Sam Khodakovskiy, CS300, TimeFlo Project
+//Sam Khodak, CS300, TimeFlo Project
 
 //Constants
 const int STR_SIZE = 200;
@@ -49,16 +49,4 @@ class timer
 
 //Global helper functions
 int yes();
-
-/*
-class pomodoro_manager
-{
-	public:
-		pomodoro_manager();
-
-
-	private:
-		timer user_timer;
-
-};
-*/
+void display_cursor(int x, int y);

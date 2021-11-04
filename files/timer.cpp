@@ -1,6 +1,6 @@
 #include "timer.h"
 
-//Sam Khodakovskiy, CS300, TimeFlo Project
+//Sam Khodak, CS300, TimeFlo Project
 //Function definitions for the timer class.
 
 
@@ -37,9 +37,11 @@ void timer::read_in()
 		define_times();	//If nothing is in the file, fill the class' times.
 	else
 	{
+		system("clear");
 		in >> workflow_param >> break_param;
-		cout << "\n\n\t\tYour previously saved settings were:" << endl;
-		cout << "\t\t[Workflow] " << workflow_param << " and [Break] " << break_param << "." << endl;
+		cout << "\n\n\t\tYour previously saved settings were:" << endl << endl;
+		cout << "\t\t[Workflow] " << workflow_param << " minutes" << endl;
+		cout << "\t\t[Break] " << break_param << " minutes." << endl << endl;
 		cout << "\t\tDo you want to use these settings?";
 
 		if (yes())
@@ -107,7 +109,7 @@ void timer::main_timer()
 int timer::minutes_timer(int num_mins, bool phase)
 {
 	int input_check {0}; //Used with getch() to check for user's quit.
-
+	int center_col, half_len, adjust_col = 0;
 
 	//Initiate the ncurses screen. Configure settings.
 	WINDOW * win = initscr();	
@@ -149,14 +151,23 @@ int timer::minutes_timer(int num_mins, bool phase)
 
 			if (phase)
 			{
-				mvprintw(4, 8, "[ REMAINING WORKFLOW TIME: %ld minutes and %ld seconds ]   [x to end timer]", rem_minutes.count(), rem_seconds.count());
+				half_len = 26 / 2;
+				center_col = win -> _maxx / 2;
+				adjust_col = center_col - half_len;
+				mvprintw(13, adjust_col, "[ REMAINING WORKFLOW TIME ]");
+				mvprintw(16, adjust_col + 1, "%ld minutes and %ld seconds", rem_minutes.count(), rem_seconds.count());
+				mvprintw(19, adjust_col + 1, "[ Press x to stop timer ]");
 
 				refresh();
 			}
 			else
 			{
-
-				mvprintw(4, 4, "[ REMAINING BREAK TIME: %ld minutes and %ld seconds ]   [x to end timer]", rem_minutes.count(), rem_seconds.count());
+				half_len = 26 / 2;
+				center_col = win -> _maxx / 2;
+				adjust_col = center_col - half_len;
+				mvprintw(13, adjust_col, "[ REMAINING BREAK TIME ]");
+				mvprintw(16, adjust_col, "%ld minutes and %ld seconds", rem_minutes.count(), rem_seconds.count());
+				mvprintw(19, adjust_col - 1, "[ Press x to stop timer ]");
 
 				refresh();
 
@@ -179,7 +190,6 @@ int timer::minutes_timer(int num_mins, bool phase)
 //Menu for each time
 void timer::menu()
 {
-
 	int menu_choice {0};
 
 	do
@@ -190,6 +200,7 @@ void timer::menu()
 		cout << "\n\t\t== 1 ==== Set your timer phase lengths ====" << endl;
 		cout << "\n\t\t== 2 ====== Start the TimeFlo timer =======" << endl;
 		cout << "\n\t\t== 3 ======== Exit the program ============" << endl;
+
 
 		cout << "\n\t\tMenu choice: ";
 		cin >> menu_choice;
@@ -221,8 +232,6 @@ void timer::menu()
 		}
 	}
 	while(menu_choice != 3);
-
-
 	return;
 }
 
@@ -234,11 +243,14 @@ int timer::define_times()
 
 	int repeat_check {0};	//Will be used to check if the user wants to re-enter.
 
+	system("clear");
+
 	do
 	{
 		cout << "\n\n\t\tHow many minutes do you want your workflow phase to be?" << endl
 			<< "\t\tEnter an integer from 1 - 60." << endl << endl;
 
+		display_cursor(17,10);
 		cin >> workflow_time;
 
 		//If workflow time is not within the correct parameters or isn't an int, loop.
@@ -251,15 +263,18 @@ int timer::define_times()
 			cout << "\n\n\t\tPlease re-enter an integer from 1 - 60 for" << endl
 				<< "\t\tthe amount of minutes in your workflow phase." << endl << endl;
 
+			display_cursor(17,10);
 			cin >> workflow_time;
 		}
 		cin.ignore(100, '\n');
 
-
+		system("clear");
 		//Repeat steps for break time phase length.
+		cout << "\n\n\t\tWorkflow time: " << workflow_time << " minutes.";
 		cout << "\n\n\t\tHow long should your break be? Enter an integer from 1 - 30" << endl
 			<< "\t\tto indicate the number of minutes." << endl << endl;
 
+		display_cursor(17,10);
 		cin >> break_time;
 
 		while (break_time < 1 || break_time > 30 || cin.fail())
@@ -271,6 +286,7 @@ int timer::define_times()
 			cout << "\n\n\t\tSomething went wrong. Re-enter your break length as integer from 1-30 minutes."
 				<< endl << endl;
 
+			display_cursor(17,10);
 			cin >> break_time;
 		}
 		cin.ignore(100, '\n');
