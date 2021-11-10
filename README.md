@@ -17,7 +17,7 @@ have been completed.
 * [x] Project plan complete.
 * [x] Design complete.
 * [x] Implementation complete.
-* [ ] Validation complete.
+* [x] Validation complete.
 
 ## Build and Run
 
